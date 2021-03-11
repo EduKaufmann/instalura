@@ -10,8 +10,13 @@ const ButtonGhost = css`
 `;
 
 const ButtonDefault = css`
-    color: ${({ theme, variant }) => get(theme, `colors.${variant}.contrastText`)};
-    background-color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)};
+    color: white;
+    background-color: ${function (props) {
+    return get(props.theme, `colors.${props.variant}.color`);
+  }};
+    color: ${function (props) {
+    return get(props.theme, `colors.${props.variant}.contrastText`);
+  }};
 `;
 
 export const Button = styled.button`
@@ -31,7 +36,7 @@ export const Button = styled.button`
       padding: 12px 43px;
       ${TextStyleVariantsMap.paragraph1}
     `,
-    })}
+  })}
 
     ${propToStyle('margin')}
     ${propToStyle('display')}
